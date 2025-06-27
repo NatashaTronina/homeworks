@@ -10,23 +10,16 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) {
-    if(marks.length < 1){
-        return 0
-    }else if (this.hasOwnProperty('excluded')){
-        return
-    }else{
-       this.marks.push(...marks);
-    }
+  if(this.hasOwnProperty('marks')){
+    this.marks.push(...marks);
+  }
 }
 
-
 Student.prototype.getAverage = function () {
-    if(this.marks.length < 1){
-        return 0
-    }else{
-        let sum = this.marks.reduce((acc, mark) => acc + mark, 0)
-        return sum / this.marks.length;
-    }
+  if(!this.marks || this.marks.length === 0){
+    return 0
+  }
+  return this.marks?.reduce((acc, mark) => acc + mark, 0)/ this.marks?.length;
 }
 
 Student.prototype.exclude = function (reason) {
