@@ -99,3 +99,58 @@ class Library{
     }
 }
 
+
+
+class Student {
+    constructor(name, gender, age, marks) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.marks = {}; 
+    }
+
+    addMark(mark, subject) {
+        if (mark < 2 || mark > 5) { 
+            return; 
+        }
+
+
+        if (!this.marks.hasOwnProperty(subject)) {
+            this.marks[subject] = []; 
+        }
+        
+        this.marks[subject].push(mark); 
+
+    }
+
+    getAverageBySubject(subject) {
+        if (!this.marks.hasOwnProperty(subject)) {
+            return 0; 
+        }
+
+        const marks = this.marks[subject];
+        if (marks.length === 0) {
+            return 0; 
+        }
+        return marks.reduce((acc, mark) => acc + mark, 0) / marks.length; 
+    }
+
+    getAverage() {
+        let totalMarks = 0;
+        let totalSubjects = 0;
+
+        for (const subject in this.marks) {
+            if (this.marks.hasOwnProperty(subject)) {
+                totalMarks += this.getAverageBySubject(subject) || 0; 
+                totalSubjects++;
+            }
+        }
+
+        if (totalSubjects === 0) {
+            return 0;
+        }
+
+        return totalMarks / totalSubjects; 
+    }
+
+}
