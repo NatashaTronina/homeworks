@@ -3,14 +3,14 @@ class PrintEditionItem {
         this.name = name;
         this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
-        this._state = state; // Используем _state для хранения значения
+        this._state = state; 
         this.type = type;
     }
 
     fix() {
         this.state *= 1.5;
         if (this.state > 100) {
-            this.state = 100; // Ограничиваем значение 100
+            this.state = 100; 
         }
     }
 
@@ -31,8 +31,8 @@ class PrintEditionItem {
 
 class Magazine extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount, state = 100, type = "magazine") {
-        super(name, releaseDate, pagesCount, state, type); // Передаем type в super()
-        this.type = type; // Устанавливаем type в конструкторе
+        super(name, releaseDate, pagesCount, state, type); 
+        this.type = type; 
     }
 }
 
